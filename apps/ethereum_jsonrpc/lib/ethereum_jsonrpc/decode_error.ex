@@ -39,7 +39,7 @@ defmodule EthereumJSONRPC.DecodeError do
 
   @impl Exception
   def message(%EthereumJSONRPC.DecodeError{
-        request: %EthereumJSONRPC.DecodeError.Request{url: request_url, body: request_body},
+        request: %EthereumJSONRPC.DecodeError.Request{url: _request_url, body: request_body},
         response: %EthereumJSONRPC.DecodeError.Response{status_code: response_status_code, body: response_body}
       }) do
     request_body_binary = IO.iodata_to_binary(request_body)
@@ -56,8 +56,6 @@ defmodule EthereumJSONRPC.DecodeError do
     Failed to decode Ethereum JSONRPC response:
 
       request:
-
-        url: #{request_url}
 
         body: #{truncated_request_body}
 
